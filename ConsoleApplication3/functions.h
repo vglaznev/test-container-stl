@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <string>
 #include <fstream>
@@ -7,34 +7,34 @@
 #include <ctime>
 #include <vector>
 
-//Пункт 1. С использованием цикла.
+//РџСѓРЅРєС‚ 1. РЎ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј С†РёРєР»Р°q.
 std::ifstream create_file_with_random_numbers(std::string, int, int);
 
-//Пункт 1. С использование функции generate.
+//РџСѓРЅРєС‚ 1. РЎ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ С„СѓРЅРєС†РёРё generate.
 std::ifstream create_file_with_random_numbers_with_generate(std::string, int, int);
 
-//Пункт 2. Чтение чисел из файла в контейнер.
+//РџСѓРЅРєС‚ 2. Р§С‚РµРЅРёРµ С‡РёСЃРµР» РёР· С„Р°Р№Р»Р° РІ РєРѕРЅС‚РµР№РЅРµСЂ.
 std::deque<double> read_from_file(std::ifstream&);
 
-//Пункт 3. Выполнение преобразования.
+//РџСѓРЅРєС‚ 3. Р’С‹РїРѕР»РЅРµРЅРёРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ.
 std::deque<double> modify(std::deque<double>, int);
 
-//Пункт 4. Выполнения преобразования. Перегруженная функция modify, принимающая итераторы.
+//РџСѓРЅРєС‚ 4. Р’С‹РїРѕР»РЅРµРЅРёСЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ. РџРµСЂРµРіСЂСѓР¶РµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ modify, РїСЂРёРЅРёРјР°СЋС‰Р°СЏ РёС‚РµСЂР°С‚РѕСЂС‹.
 std::deque<double> modify(std::deque<double>::iterator, std::deque<double>::iterator, int);
 
-//Пункт 5. Применение преобразования с помощью transform.
+//РџСѓРЅРєС‚ 5. РџСЂРёРјРµРЅРµРЅРёРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ transform.
 std::deque<double> modify_with_transform(std::deque<double>, int);
 
-//Пункт 6. Применение преобразования с помощью for_each.
+//РџСѓРЅРєС‚ 6. РџСЂРёРјРµРЅРµРЅРёРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ for_each.
 std::deque<double> modify_with_foreach(std::deque<double>, int);
 
-//Пункт 7. Нахождени суммы элементов в контейнере.
+//РџСѓРЅРєС‚ 7. РќР°С…РѕР¶РґРµРЅРё СЃСѓРјРјС‹ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС‚РµР№РЅРµСЂРµ.
 double sum_of_elements(const std::deque<double>&);
 
-//Пункт 7. Нахождение среднего арифметического элементов в контейнере.
+//РџСѓРЅРєС‚ 7. РќР°С…РѕР¶РґРµРЅРёРµ СЃСЂРµРґРЅРµРіРѕ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС‚РµР№РЅРµСЂРµ.
 double arithmetic_mean_of_elements(const std::deque<double>&);
 
-//Пункт 8. Вывод контейнера в консоль/файл (зависит от потока, переданного в качестве out)
+//РџСѓРЅРєС‚ 8. Р’С‹РІРѕРґ РєРѕРЅС‚РµР№РЅРµСЂР° РІ РєРѕРЅСЃРѕР»СЊ/С„Р°Р№Р» (Р·Р°РІРёСЃРёС‚ РѕС‚ РїРѕС‚РѕРєР°, РїРµСЂРµРґР°РЅРЅРѕРіРѕ РІ РєР°С‡РµСЃС‚РІРµ out)
 void output_container_to_stream(const std::deque<double>&, std::ostream&);
 
 double halfsum_of_first_negative_and_k_element(std::deque<double>::const_iterator, std::deque<double>::const_iterator, int k);

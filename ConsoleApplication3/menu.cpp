@@ -1,4 +1,4 @@
-#include "menu.h"
+ï»¿#include "menu.h"
 
 std::deque<double> original_container;
 std::ifstream file;
@@ -10,36 +10,36 @@ bool was_file_prepared = false;
 bool was_container_transformed = false;
 
 void print_menu() {
-	std::cout << "1. Çàïîëíèòü òåêñòîâûé ôàéë N ñëó÷àéíûìè ÷èñëàìè èç äèàïàçîíà [-M; M]." << std::endl;
-	std::cout << "2. Çàïîëíèòü òåêñòîâûé ôàéë N ñëó÷àéíûìè ÷èñëàìè èç äèàïàçîíà [-M; M] ñ ïîìîùüþ ôóíêöèè generate." << std::endl;
-	std::cout << "3. Ñ÷èòàòü ÷èñëà èç ôàéëà â êîíòåéíåð." << std::endl;
-	std::cout << "4. Âûïîëíèòü ïðåîáðàçîâàíèå êîíòåéíåðà. Ôóíêöèÿ modify, ïðèíèìàþùàÿ êîíòåéíåð." << std::endl;
-	std::cout << "5. Âûïîëíèòü ïðåîáðàçîâàíèå êîíòåéíåðà. Ïåðåãðóæåííàÿ ôóíêöèÿ modify, ïðèíèìàþùàÿ èòåðàòîðû íà íà÷àëî è êîíåö îáðàáàòûâàåìîé ÷àñòè êîíòåéíåðà." << std::endl;
-	std::cout << "6. Âûïîëíèòü ïðåîáðàçîâàíèå êîíòåéíåðà ñ ïîìîùüþ àëãîðèòìà transform." << std::endl;
-	std::cout << "7. Âûïîëíèòü ïðåîáðàçîâàíèå êîíòåéíåðà ñ ïîìîùüþ àëãîðèòìà for_each." << std::endl;
-	std::cout << "8. Ñóììà ÷èñåë â êîíòåéíåðå." << std::endl;
-	std::cout << "9. Cðåäíåå àðèôìåòè÷åñêîå ÷èñåë â êîíòåéíåðå." << std::endl;
-	std::cout << "0. Âûâåñòè îðèãèíàëüíûé êîíòåéíåð â êîíñîëü." << std::endl;
-	std::cout << "c. Âûâåñòè èçìåíåííûé êîíòåéíåð â êîíñîëü." << std::endl;
-	std::cout << "f. Âûâåñòè èçìåíåííûé êîíòåéíåð â ôàéë." << std::endl;
-	std::cout << "Íàæìèòå esc äëÿ âûõîäà." << std::endl;
+	std::cout << "1. Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» N ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ñ‡Ð¸ÑÐ»Ð°Ð¼Ð¸ Ð¸Ð· Ð´Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½Ð° [-M; M]q." << std::endl;
+	std::cout << "2. Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» N ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ñ‡Ð¸ÑÐ»Ð°Ð¼Ð¸ Ð¸Ð· Ð´Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½Ð° [-M; M] Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ generate." << std::endl;
+	std::cout << "3. Ð¡Ñ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð° Ð² ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€." << std::endl;
+	std::cout << "4. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°. Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ modify, Ð¿Ñ€Ð¸Ð½Ð¸Ð¼Ð°ÑŽÑ‰Ð°Ñ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€." << std::endl;
+	std::cout << "5. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°. ÐŸÐµÑ€ÐµÐ³Ñ€ÑƒÐ¶ÐµÐ½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ modify, Ð¿Ñ€Ð¸Ð½Ð¸Ð¼Ð°ÑŽÑ‰Ð°Ñ Ð¸Ñ‚ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹ Ð½Ð° Ð½Ð°Ñ‡Ð°Ð»Ð¾ Ð¸ ÐºÐ¾Ð½ÐµÑ† Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÐ¼Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°." << std::endl;
+	std::cout << "6. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼Ð° transform." << std::endl;
+	std::cout << "7. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼Ð° for_each." << std::endl;
+	std::cout << "8. Ð¡ÑƒÐ¼Ð¼Ð° Ñ‡Ð¸ÑÐµÐ» Ð² ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ðµ." << std::endl;
+	std::cout << "9. CÑ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ñ‡Ð¸ÑÐµÐ» Ð² ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ðµ." << std::endl;
+	std::cout << "0. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð¾Ñ€Ð¸Ð³Ð¸Ð½Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð² ÐºÐ¾Ð½ÑÐ¾Ð»ÑŒ." << std::endl;
+	std::cout << "c. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð² ÐºÐ¾Ð½ÑÐ¾Ð»ÑŒ." << std::endl;
+	std::cout << "f. Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð² Ñ„Ð°Ð¹Ð»." << std::endl;
+	std::cout << "ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ esc Ð´Ð»Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð°." << std::endl;
 }
 
 void blueprint_for_options_1_2(std::ifstream (*function)(std::string, int, int)) {
 	std::string file_name;
 	int N, M;
-	std::cout << "Ââåäèòå èìÿ ôàéëà: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð°: " << std::endl;
 	std::cin >> file_name;
-	std::cout << "Ââåäèòå êîëè÷åñòâî ÷èñåë N: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‡Ð¸ÑÐµÐ» N: " << std::endl;
 	std::cin >> N;
-	std::cout << "Ââåäèòå ãðàíèöó M: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñƒ M: " << std::endl;
 	std::cin >> M;
 	
 	try {
 		file = function(file_name, N, M);
 	}
 	catch (const std::exception& e) {
-		std::cerr << "Îøèáêà: " << e.what() << std::endl;
+		std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: " << e.what() << std::endl;
 		return;
 	}
 	was_file_prepared = true;
@@ -47,35 +47,35 @@ void blueprint_for_options_1_2(std::ifstream (*function)(std::string, int, int))
 
 void option_3() {
 	if (!was_file_prepared) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà ñãåíåðèðîâàòü ôàéë. Âûïîëíèòå îïöèþ 1 èëè 2." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð». Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ†Ð¸ÑŽ 1 Ð¸Ð»Ð¸ 2." << std::endl;
 		return;
 	}
 	try {
 		original_container = read_from_file(file);
 	}
 	catch (const std::exception& e) {
-		std::cerr << "Îøèáêà: " << e.what() << std::endl;
+		std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: " << e.what() << std::endl;
 		return;
 	}
-	std::cout << "Ôàéë áûë ïðî÷èòàí óñïåøíî!" << std::endl;
+	std::cout << "Ð¤Ð°Ð¹Ð» Ð±Ñ‹Ð» Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾!" << std::endl;
 	was_original_container_readed = true;
 }
 
 void blueprint_for_options_4_6_7(std::deque<double> (*function)(std::deque<double>, int)) {
 	if (!was_original_container_readed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà ñ÷èòàòü êîíòåéíåð èç ôàéëà. Âûïîëíèòå îïöèþ 3." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð°. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ†Ð¸ÑŽ 3." << std::endl;
 		return;
 	}
 
 	int k;
-	std::cout << "Ââåäèòå íîìåð ýëåìåíòà K: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° K: " << std::endl;
 	std::cin >> k;
 
 	try {
 		transformed_container = function(original_container, k);
 	}
 	catch (const std::exception& e) {
-		std::cerr << "Îøèáêà: " << e.what() << std::endl;
+		std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: " << e.what() << std::endl;
 		return;
 	}
 
@@ -84,24 +84,24 @@ void blueprint_for_options_4_6_7(std::deque<double> (*function)(std::deque<doubl
 
 void option_5() {
 	if (!was_original_container_readed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà ñ÷èòàòü êîíòåéíåð èç ôàéëà. Âûïîëíèòå îïöèþ 3." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð°. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ†Ð¸ÑŽ 3." << std::endl;
 		return;
 	}
 
 	int begin, end, k;
-	std::cout << "Óêàæèòå èíäåêñ íà÷àëà îáðàáàòûâàåìîé ÷àñòè êîíòåéíåðà:" << std::endl;
+	std::cout << "Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÐ¼Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°:" << std::endl;
 	std::cin >> begin;
-	std::cout << "Óêàæèòå èíäåêñ êîíöà îáðàáàòûâàåìîé ÷àñòè êîíòåéíåðà (êîíåö íå âêëþ÷àåòñÿ â îáðàáàòûâàåìóþ ÷àñòü):" << std::endl;
+	std::cout << "Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ ÐºÐ¾Ð½Ñ†Ð° Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÐ¼Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° (ÐºÐ¾Ð½ÐµÑ† Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ÑÑ Ð² Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÐ¼ÑƒÑŽ Ñ‡Ð°ÑÑ‚ÑŒ):" << std::endl;
 	std::cin >> end;
 	if (end <= begin) {
-		std::cout << "Èíäåêñ êîíöà äîëæíà áûòü áîëüøå èíäåêñà íà÷àëà õîòÿ áû íà 1! Ïîïðîáóéòå ñíîâà." << std::endl;
+		std::cout << "Ð˜Ð½Ð´ÐµÐºÑ ÐºÐ¾Ð½Ñ†Ð° Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð¸Ð½Ð´ÐµÐºÑÐ° Ð½Ð°Ñ‡Ð°Ð»Ð° Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð½Ð° 1! ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°." << std::endl;
 		return;
 	}
 	if (end > original_container.size()) {
-		std::cout << "Óêàçàííûå èíäåêñû íàõîäÿòñÿ çà ïðåäåëàìè êîíòåéíåðà. Ïîïðîáóéòå ñíîâà." << std::endl;
+		std::cout << "Ð£ÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ðµ Ð¸Ð½Ð´ÐµÐºÑÑ‹ Ð½Ð°Ñ…Ð¾Ð´ÑÑ‚ÑÑ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ð°Ð¼Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°." << std::endl;
 		return;
 	}
-	std::cout << "Ââåäèòå íîìåð ýëåìåíòà K: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° K: " << std::endl;
 	std::cin >> k;
 	try {
 		transformed_container = modify(original_container.begin() + begin, original_container.begin() + end, k);
@@ -116,60 +116,60 @@ void option_5() {
 
 void option_8() {
 	if (!was_original_container_readed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà ñ÷èòàòü êîíòåéíåð èç ôàéëà. Âûïîëíèòå îïöèþ 3." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð°. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ†Ð¸ÑŽ 3." << std::endl;
 		return;
 	}
-	std::cout << "Ñóììà ÷èñåë â èñõîäíîì êîíòåéíåðå: " << sum_of_elements(original_container) << std::endl;
+	std::cout << "Ð¡ÑƒÐ¼Ð¼Ð° Ñ‡Ð¸ÑÐµÐ» Ð² Ð¸ÑÑ…Ð¾Ð´Ð½Ð¾Ð¼ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ðµ: " << sum_of_elements(original_container) << std::endl;
 }
 
 void option_9() {
 	if (!was_original_container_readed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà ñ÷èòàòü êîíòåéíåð èç ôàéëà. Âûïîëíèòå îïöèþ 3." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð°. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ†Ð¸ÑŽ 3." << std::endl;
 		return;
 	}
-	std::cout << "Ñðåäíåå àðèôìåòè÷åñêîå ÷èñåë â èñõîäíîì êîíòåéíåðå: " << arithmetic_mean_of_elements(original_container) << std::endl;
+	std::cout << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ñ‡Ð¸ÑÐµÐ» Ð² Ð¸ÑÑ…Ð¾Ð´Ð½Ð¾Ð¼ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ðµ: " << arithmetic_mean_of_elements(original_container) << std::endl;
 }
 
 void output_original_container_to_console() {
 	if (!was_original_container_readed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà ñ÷èòàòü êîíòåéíåð èç ôàéëà. Âûïîëíèòå îïöèþ 3." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð°. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ†Ð¸ÑŽ 3." << std::endl;
 		return;
 	}
-	std::cout << "Îðèãèíàëüíûé êîíòåéíåð: " << std::endl;
+	std::cout << "ÐžÑ€Ð¸Ð³Ð¸Ð½Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€: " << std::endl;
 	output_container_to_stream(original_container, std::cout);
 	std::cout << std::endl;
 }
 
 void output_transformed_container_to_console() {
 	if (!was_container_transformed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà èçìåíèòü êîíòåéíåð. Âûïîëíèòå ëþáóþ èç îïöèé 4-7." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ Ð¸Ð· Ð¾Ð¿Ñ†Ð¸Ð¹ 4-7." << std::endl;
 		return;
 	}
-	std::cout << "Èçìåíåííûé êîíòåéíåð: " << std::endl;
+	std::cout << "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€: " << std::endl;
 	output_container_to_stream(transformed_container, std::cout);
 	std::cout << std::endl;
 }
 
 void output_transformed_container_to_file() {
 	if (!was_container_transformed) {
-		std::cout << "Íåîáõîäèìî ñíà÷àëà èçìåíèòü êîíòåéíåð. Âûïîëíèòå ëþáóþ èç îïöèé 4-7." << std::endl;
+		std::cout << "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€. Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ Ð¸Ð· Ð¾Ð¿Ñ†Ð¸Ð¹ 4-7." << std::endl;
 		return;
 	}
 	std::string file_name;
-	std::cout << "Ââåäèòå èìÿ ôàéëà: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð°: " << std::endl;
 	std::cin >> file_name;
 	std::ofstream out(file_name);
 	if (!out.is_open()) {
-		std::cout << "Íå óäàåòñÿ îòêðûòü ôàéë íà çàïèñü!";
+		std::cout << "ÐÐµ ÑƒÐ´Ð°ÐµÑ‚ÑÑ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» Ð½Ð° Ð·Ð°Ð¿Ð¸ÑÑŒ!";
 		return;
 	}
 	output_container_to_stream(transformed_container, out);
 	out.close();
-	std::cout << "Çàïèñü ïðîøëà óñïåøíî!";
+	std::cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð¿Ñ€Ð¾ÑˆÐ»Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾!";
 }
 
 void incorrect_button() {
-	std::cout << "Òàêîé îïöèè íåò! Ïðîâåðüòå ðàñêëàäêó êëàâèàòóðû." << std::endl;
+	std::cout << "Ð¢Ð°ÐºÐ¾Ð¹ Ð¾Ð¿Ñ†Ð¸Ð¸ Ð½ÐµÑ‚! ÐŸÑ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ñ€Ð°ÑÐºÐ»Ð°Ð´ÐºÑƒ ÐºÐ»Ð°Ð²Ð¸Ð°Ñ‚ÑƒÑ€Ñ‹." << std::endl;
 }
 
 void menu() {

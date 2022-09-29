@@ -1,51 +1,51 @@
-#include "functions.h"
+п»ї#include "functions.h"
 
-//Пункт 1. С использованием цикла
+//РџСѓРЅРєС‚ 1. РЎ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј С†РёРєР»Р°q
 std::ifstream create_file_with_random_numbers(std::string file_name, int N, int M) {
 	std::ofstream out(file_name);
 	if (!out.is_open()) {
-		throw std::exception("Не удается открыть файл на запись!");
+		throw std::exception("РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РЅР° Р·Р°РїРёСЃСЊ!");
 	}
-	//Для генератора псевдослучайных чисел необходимо задать стартовое значение, используем текущее время в секундах
+	//Р”Р»СЏ РіРµРЅРµСЂР°С‚РѕСЂР° РїСЃРµРІРґРѕСЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РґР°С‚СЊ СЃС‚Р°СЂС‚РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ, РёСЃРїРѕР»СЊР·СѓРµРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ РІ СЃРµРєСѓРЅРґР°С…
 	std::srand(std::time(nullptr));
 	for (int i = 0; i < N; i++) {
-		//Записываем целое псевдослучайное число из диапазона [-M; M]
+		//Р—Р°РїРёСЃС‹РІР°РµРј С†РµР»РѕРµ РїСЃРµРІРґРѕСЃР»СѓС‡Р°Р№РЅРѕРµ С‡РёСЃР»Рѕ РёР· РґРёР°РїР°Р·РѕРЅР° [-M; M]
 		out << std::rand() % (2 * M + 1) - M << " ";
 	}
-	//Закрываем поток
+	//Р—Р°РєСЂС‹РІР°РµРј РїРѕС‚РѕРє
 	out.close();
 	std::ifstream in(file_name);
 	if (!in.is_open()) {
-		throw std::exception("Не удается открыть файл на чтение!");
+		throw std::exception("РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РЅР° С‡С‚РµРЅРёРµ!");
 	}
 	return in;
 }
 
-//Пункт 1. С использование функции generate
+//РџСѓРЅРєС‚ 1. РЎ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ С„СѓРЅРєС†РёРё generate
 std::ifstream create_file_with_random_numbers_with_generate(std::string file_name, int N, int M) {
 	std::ofstream out(file_name);
 	if (!out.is_open()) {
-		throw std::exception("Не удается открыть файл на запись!");
+		throw std::exception("РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РЅР° Р·Р°РїРёСЃСЊ!");
 	}
-	//Для генератора псевдослучайных чисел необходимо задать стартовое значение, используем текущее время в секундах
+	//Р”Р»СЏ РіРµРЅРµСЂР°С‚РѕСЂР° РїСЃРµРІРґРѕСЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РґР°С‚СЊ СЃС‚Р°СЂС‚РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ, РёСЃРїРѕР»СЊР·СѓРµРј С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ РІ СЃРµРєСѓРЅРґР°С…
 	std::srand(std::time(nullptr));
 	
 	std::vector<int> generated_numbers(N);
-	//Генерируем вектор N чисел из диапазона [-M; M] 
+	//Р“РµРЅРµСЂРёСЂСѓРµРј РІРµРєС‚РѕСЂ N С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР° [-M; M] 
 	std::generate(generated_numbers.begin(), generated_numbers.end(), [M]() {return std::rand() % (2 * M + 1) - M; });
-	//Записываем в файл
+	//Р—Р°РїРёСЃС‹РІР°РµРј РІ С„Р°Р№Р»
 	std::copy(generated_numbers.begin(), generated_numbers.end(), std::ostream_iterator<int>(out, " "));
 
-	//Закрываем поток
+	//Р—Р°РєСЂС‹РІР°РµРј РїРѕС‚РѕРє
 	out.close();
 	std::ifstream in(file_name);
 	if (!in.is_open()) {
-		throw std::exception("Не удается открыть файл на чтение!");
+		throw std::exception("РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РЅР° С‡С‚РµРЅРёРµ!");
 	}
 	return in;
 }
 
-//Пункт 2
+//РџСѓРЅРєС‚ 2
 std::deque<double> read_from_file(std::ifstream& file) {
 	std::deque<double> result;
 	int current_number;
@@ -56,7 +56,7 @@ std::deque<double> read_from_file(std::ifstream& file) {
 	return result;
 }
 
-//Пункт 3
+//РџСѓРЅРєС‚ 3
 std::deque<double> modify(std::deque<double> container, int k) {
 	double halfsum = halfsum_of_first_negative_and_k_element(container.cbegin(), container.cend(), k);
 	for (int i = 0; i < container.size(); i++) {
@@ -65,23 +65,23 @@ std::deque<double> modify(std::deque<double> container, int k) {
 	return container;
 }
 
-//Пункт 4
+//РџСѓРЅРєС‚ 4
 std::deque<double> modify(std::deque<double>::iterator begin, std::deque<double>::iterator end, int k) {
 	double halfsum = halfsum_of_first_negative_and_k_element(begin, end, k);
 	for (auto it = begin; it != end; it++) {
 		*it /= halfsum;
 	}
-	//Примечание:
-	//Если возвращать контейнер - необязательное условие для этой функции, то можно передавать итераторы по ссылке.
-	//Соответсвтенно, изменяться будет исходный контейнер, на элементы которого указывают итераторы.
-	//Такой вариант функции закомментирован ниже.
+	//РџСЂРёРјРµС‡Р°РЅРёРµ:
+	//Р•СЃР»Рё РІРѕР·РІСЂР°С‰Р°С‚СЊ РєРѕРЅС‚РµР№РЅРµСЂ - РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕРµ СѓСЃР»РѕРІРёРµ РґР»СЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, С‚Рѕ РјРѕР¶РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ РёС‚РµСЂР°С‚РѕСЂС‹ РїРѕ СЃСЃС‹Р»РєРµ.
+	//РЎРѕРѕС‚РІРµС‚СЃРІС‚РµРЅРЅРѕ, РёР·РјРµРЅСЏС‚СЊСЃСЏ Р±СѓРґРµС‚ РёСЃС…РѕРґРЅС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ, РЅР° СЌР»РµРјРµРЅС‚С‹ РєРѕС‚РѕСЂРѕРіРѕ СѓРєР°Р·С‹РІР°СЋС‚ РёС‚РµСЂР°С‚РѕСЂС‹.
+	//РўР°РєРѕР№ РІР°СЂРёР°РЅС‚ С„СѓРЅРєС†РёРё Р·Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅ РЅРёР¶Рµ.
 	std::deque<double> result_container(end - begin);
 	std::copy(begin, end, result_container.begin());
 	return result_container;
 }
 
-////Альтернативный вариант функции, принимающей итераторы
-////Пункт 4
+////РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹Р№ РІР°СЂРёР°РЅС‚ С„СѓРЅРєС†РёРё, РїСЂРёРЅРёРјР°СЋС‰РµР№ РёС‚РµСЂР°С‚РѕСЂС‹
+////РџСѓРЅРєС‚ 4
 //void modify(std::deque<double>::iterator& begin, std::deque<double>::iterator& end, int k) {
 //	double halfsum = halfsum_of_first_negative_and_k_element(begin, end, k);
 //	for (auto it = begin; it != end; it++) {
@@ -89,22 +89,22 @@ std::deque<double> modify(std::deque<double>::iterator begin, std::deque<double>
 //	}
 //}
 
-//Пункт 5. Применение преобразования с помощью transform.
+//РџСѓРЅРєС‚ 5. РџСЂРёРјРµРЅРµРЅРёРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ transform.
 std::deque<double> modify_with_transform(std::deque<double> container, int k) {
 	double halfsum = halfsum_of_first_negative_and_k_element(container.cbegin(), container.cend(), k);
-	//Результирующую последовательность сохраняем в том же контейнере, что и исходную (поэтому третьим аргументом идет container.begin())
+	//Р РµР·СѓР»СЊС‚РёСЂСѓСЋС‰СѓСЋ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ СЃРѕС…СЂР°РЅСЏРµРј РІ С‚РѕРј Р¶Рµ РєРѕРЅС‚РµР№РЅРµСЂРµ, С‡С‚Рѕ Рё РёСЃС…РѕРґРЅСѓСЋ (РїРѕСЌС‚РѕРјСѓ С‚СЂРµС‚СЊРёРј Р°СЂРіСѓРјРµРЅС‚РѕРј РёРґРµС‚ container.begin())
 	std::transform(container.begin(), container.end(), container.begin(), [halfsum](double element) {return element / halfsum; });
 	return container;
 }
 
-//Пункт 6. Применение преобразования с помощью for_each.
+//РџСѓРЅРєС‚ 6. РџСЂРёРјРµРЅРµРЅРёРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ for_each.
 std::deque<double> modify_with_foreach(std::deque<double> container, int k) {
 	double halfsum = halfsum_of_first_negative_and_k_element(container.cbegin(), container.cend(), k);
 	std::for_each(container.begin(), container.end(), [halfsum](double& element) {element /= halfsum; });
 	return container;
 }
 
-//Пункт 7. Нахождени суммы элементов в контейнере.
+//РџСѓРЅРєС‚ 7. РќР°С…РѕР¶РґРµРЅРё СЃСѓРјРјС‹ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС‚РµР№РЅРµСЂРµ.
 double sum_of_elements(const std::deque<double>& container) {
 	double sum = 0;
 	for (auto it = container.begin(); it != container.end(); it++) {
@@ -113,35 +113,35 @@ double sum_of_elements(const std::deque<double>& container) {
 	return sum;
 }
 
-//Пункт 7. Нахождение среднего арифметического элементов в контейнере.
+//РџСѓРЅРєС‚ 7. РќР°С…РѕР¶РґРµРЅРёРµ СЃСЂРµРґРЅРµРіРѕ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС‚РµР№РЅРµСЂРµ.
 double arithmetic_mean_of_elements(const std::deque<double>& container) {
 	return sum_of_elements(container) / container.size();
 }
 
-//Пункт 8. Вывод измененного контейнера в консоль/файл (зависит от потока, переданного в качестве out)
+//РџСѓРЅРєС‚ 8. Р’С‹РІРѕРґ РёР·РјРµРЅРµРЅРЅРѕРіРѕ РєРѕРЅС‚РµР№РЅРµСЂР° РІ РєРѕРЅСЃРѕР»СЊ/С„Р°Р№Р» (Р·Р°РІРёСЃРёС‚ РѕС‚ РїРѕС‚РѕРєР°, РїРµСЂРµРґР°РЅРЅРѕРіРѕ РІ РєР°С‡РµСЃС‚РІРµ out)
 void output_container_to_stream(const std::deque<double>& container, std::ostream& out) {
 	std::copy(container.begin(), container.end(), std::ostream_iterator<double>(out, " "));
 }
 
 
-//Вспомогательная функция для нахождения полусуммы первого отрицательного числа и K-го числа в контейнере
+//Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РїРѕР»СѓСЃСѓРјРјС‹ РїРµСЂРІРѕРіРѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ С‡РёСЃР»Р° Рё K-РіРѕ С‡РёСЃР»Р° РІ РєРѕРЅС‚РµР№РЅРµСЂРµ
 double halfsum_of_first_negative_and_k_element(std::deque<double>::const_iterator begin, std::deque<double>::const_iterator end, int k) {
 	std::deque<double>::const_iterator it;
-	//идем по контейнеру пока не найдем первый отрицательный элемент
+	//РёРґРµРј РїРѕ РєРѕРЅС‚РµР№РЅРµСЂСѓ РїРѕРєР° РЅРµ РЅР°Р№РґРµРј РїРµСЂРІС‹Р№ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚
 	for (it = begin; it != end && *it >= 0; it++);
-	//если мы дошли до конца контейнера и последний элемент в нем положительный, то выкидываем исключение
+	//РµСЃР»Рё РјС‹ РґРѕС€Р»Рё РґРѕ РєРѕРЅС†Р° РєРѕРЅС‚РµР№РЅРµСЂР° Рё РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РІ РЅРµРј РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№, С‚Рѕ РІС‹РєРёРґС‹РІР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ
 	if (*it >= 0) {
-		throw std::exception("В контейнере отсутствуют отрицательные числа! Попробуйте перегенировать файл и считать числа заново!");
+		throw std::exception("Р’ РєРѕРЅС‚РµР№РЅРµСЂРµ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ С‡РёСЃР»Р°! РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРµСЂРµРіРµРЅРёСЂРѕРІР°С‚СЊ С„Р°Р№Р» Рё СЃС‡РёС‚Р°С‚СЊ С‡РёСЃР»Р° Р·Р°РЅРѕРІРѕ!");
 	}
 	
 	if ((end - begin) <= k) {
-		throw std::exception("k больше, чем количество элементов в контейнере!");
+		throw std::exception("k Р±РѕР»СЊС€Рµ, С‡РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС‚РµР№РЅРµСЂРµ!");
 	}
 	
 	double halfsum = (*it + *(begin + k)) / 2.0;
 
 	if (halfsum == 0) {
-		throw std::exception("Полусумма равна нулю. Дальнейшее деление на полусумму невозможно");
+		throw std::exception("РџРѕР»СѓСЃСѓРјРјР° СЂР°РІРЅР° РЅСѓР»СЋ. Р”Р°Р»СЊРЅРµР№С€РµРµ РґРµР»РµРЅРёРµ РЅР° РїРѕР»СѓСЃСѓРјРјСѓ РЅРµРІРѕР·РјРѕР¶РЅРѕ");
 	}
 	return halfsum;
 }
